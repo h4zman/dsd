@@ -1,0 +1,65 @@
+module test1 (clk, reset, bcd, p1, p2, seg);
+
+input clk, reset;
+input [3:0] bcd;
+output reg p1, p2;
+reg [2:0] cstate, nstate;
+output [6:0] seg;
+reg [6:0] seg;
+
+parameter s1 = 2'b00;
+parameter s2 = 2'b01;
+parameter s3 = 2'b10;
+parameter s4 = 2'b11;
+
+always @*
+begin
+	case(cstate)
+	s1: 
+	begin	
+		p1 = 1'b0;
+		p2 = 1'b0;
+		nstate = s2;
+		end
+	s2: 
+	begin	
+		p1 = 1'b1;
+		p2 = 1'b0;
+		nstate = s3;
+		end
+	s3: 
+	begin	
+		p1 = 1'b0;
+		p2 = 1'b1;
+		nstate = s4;
+		end
+	s4: 
+	begin	
+		p1 = 1'b1;
+		p2 = 1'b1;
+		nstate = s1;
+		end
+endcase
+end
+
+always @ (posedge clk, posedge reset)
+begin
+	if (reset == 1)
+	cstate <= s1;
+	else
+	cstate <= nstate;
+end
+
+//always block for converting bcd digit into 7 segment format
+    always @(bcd)
+    begin
+        case (bcd) //case statement
+            0 : seg = 7'b0000001;
+            1 : seg = 7'b1001111;
+            2 : seg = 7'b0010010;
+           
+            //switch off 7 segment character when the bcd digit is not a decimal number.
+            default : seg = 7'b1111111; 
+        endcase
+    end
+endmodule
