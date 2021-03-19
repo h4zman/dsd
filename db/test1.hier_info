@@ -1,0 +1,31 @@
+|test1
+clk => cstate~1.DATAIN
+reset => cstate~3.DATAIN
+p1 <= p1.DB_MAX_OUTPUT_PORT_TYPE
+ldr => seg[3].DATAIN
+ldr => seg[2].DATAIN
+ldr => seg[1].DATAIN
+ldr => seg[0].DATAIN
+ldr => led1.DATAIN
+ldr => led3.DATAIN
+ir => arduino.DATAIN
+seg[0] <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= <GND>
+seg[5] <= <GND>
+seg[6] <= <VCC>
+seg2[0] <= <GND>
+seg2[1] <= <GND>
+seg2[2] <= <GND>
+seg2[3] <= <GND>
+seg2[4] <= <GND>
+seg2[5] <= <GND>
+seg2[6] <= <VCC>
+led1 <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+led2 <= <GND>
+led3 <= ldr.DB_MAX_OUTPUT_PORT_TYPE
+arduino <= ir.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,5 @@
+
+State Machine - |test1|cstate
+Name cstate.s2 
+cstate.s1 0 
+cstate.s2 1 
